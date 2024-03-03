@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service
+spec:
+  replicas: 3  # You can adjust this based on your needs
+  selector:
+    matchLabels:
+      app: service
+  template:
+    metadata:
+      labels:
+        app: service
+    spec:
+      containers:
+      - name: service
+        image: yogharajar/load_kubernetes:service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
